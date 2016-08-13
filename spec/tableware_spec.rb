@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Tablecloth do
+describe Tableware do
   it 'has a version number' do
-    expect(Tablecloth::VERSION).not_to be nil
+    expect(Tableware::VERSION).not_to be nil
   end
 
   let(:input) do
@@ -23,7 +23,7 @@ describe Tablecloth do
         %w[Winston 3]
       ]
 
-      expect(Tablecloth.arrays(input)).to eq expected
+      expect(Tableware.arrays(input)).to eq expected
     end
   end
 
@@ -35,7 +35,7 @@ describe Tablecloth do
         { hero: 'Winston', value: '3' }
       ]
 
-      expect(Tablecloth.hashes(input)).to eq expected
+      expect(Tableware.hashes(input)).to eq expected
     end
   end
 end

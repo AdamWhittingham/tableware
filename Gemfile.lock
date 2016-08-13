@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tablecloth (0.1.0)
+    tableware (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -122,7 +122,7 @@ DEPENDENCIES
   rubocop
   rubycritic
   simplecov
-  tablecloth!
+  tableware!
 
 BUNDLED WITH
    1.12.5

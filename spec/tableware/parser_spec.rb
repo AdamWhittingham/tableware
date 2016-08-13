@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Tablecloth::Parser do
+describe Tableware::Parser do
   describe '.arrays' do
     let(:expected) do
       [

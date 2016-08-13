@@ -1,4 +1,4 @@
-class Tablecloth
+class Tableware
 
   class Parser
 

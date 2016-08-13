@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'tablecloth/version'
+require 'tableware/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'tablecloth'
-  spec.version       = Tablecloth::VERSION
+  spec.name          = 'tableware'
+  spec.version       = Tableware::VERSION
   spec.authors       = ['Adam Whittingham']
   spec.email         = ['adam@devmountain.co.uk']
 

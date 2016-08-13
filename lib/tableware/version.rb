@@ -1,4 +1,4 @@
-class Tablecloth
+class Tableware
 
   VERSION = '0.1.0'.freeze
 
