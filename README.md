@@ -3,42 +3,41 @@
 Tableware is a tiny gem for making it easier to define data in an text table.
 Table rows are parsed into either arrays or hashes.
 
-For example, writing:
+For example:
 
-```
-[
- [ "Type A",   true,   false,   2016 ],
- [ "Type B",   "only on alternating Wednesdays",   false,   2017 ],
- [ "Type C",   :never,   true,   2016 ]
-].each do |args|
-  // Some test or permissions check or something
-end
-```
-is fine but it can be a pain to format at work with, especially for larger data sets.
+```ruby
+stats = ' Hero        |    Value     |  Hours Played
+          ------------------------------------------
+          Phara       |       10     |      22
+          Mercy       |        9     |      11
+          Winston     |        3     |       2        '
 
-Tableware lets you trade a bit of parsing for nicer text tables. Instead of the above, you could write:
+Tableware.arrays(stats)
+ # => [
+        ['Phara', '10', '22'],
+        ['Mercy', '9', '11'],
+        ['Winston', '3', '2']
+      ]
 
-```
-table = %q[
-  |    Type      |  Valid                           | Infinite   | Year Introduced |
-  ----------------------------------------------------------------------------------
-  |  Type A      | true                             | false      | 2016            |
-  |  Type B      | Only on alternating Wednesdays   | false      | 2017            |
-  |  Type C      | never                            | true       | 2016            |
-]
-Tableware.arrays.each do |args|
-  // Some test or permissions check or something
-end
+Tableware.hashes(stats)
+  #=> [
+        { hero: 'Phara', value: '10', hours_played: 22 },
+        { hero: 'Mercy', value: '9', hours_played: 11 },
+        { hero: 'Winston', value: '3', hours_played: 2 }
+      ]
 ```
 
-The upside is that you get a much more human friendly table to read, which will save you time by making it something you can quickly scan over.
-The downside is that everything appears on the other side as a string, so you may need to do some `.to_i`ing to convert things back into the type you're expecting.
+Writing test data or a matrix of permissions in a big hash or nested array is fine, but it can be a pain to format at work with, especially for larger data setsa or with item of very different lengths.
 
-*Please note* that this isn't always going to be better than defining your data in another format; arrays, giant hashes of doom, JSON/YAML or even CSV may me easier to work with. This is another option and one which may be better for that middle ground when your data makes arrays hard to format but it's not big enough for you to want to extract it to an external file. Or perhaps you just like Cucumber scenario outlines and want something similar in rspec!
-Whatever your reasoning, this is just one more option for formatting your data.
+Tableware lets you use a more human friendly format so that you can more easily scan and understand the data.
 
-This gem has been created as a quick experiement to see if or how ofen this feature could be useful.
+The downside is that everything is treated as a string, so you may need to do some `.to_i`ing to convert things back into the type you're expecting. However, this is a one-time cost and [optimising for reading code is a good idea](http://va.lent.in/optimize-for-readability-first/).
+
+This isn't always going to be better than defining your data in another format, but it is another option. Or perhaps you just like Cucumber scenario outlines and want something similar in rspec!
+
+This gem has been created as a quick experiment to see if or how ofen this feature could be useful.
 If you find it useful, please like it or better yet, extend it!
+
 
 ## Installation
 
@@ -70,38 +69,8 @@ Tableware provides two main methods for getting your data back out of the table:
   1. `Tableware.arrays` returns an array of arrays
   2. `Tableware.hashes` returns an array of hashes, where the keys come from the headings row
 
+  Both of these can be seen in use in the example at the top of this README.
 
-For example:
-
-```
-input = '
-      Hero        |    Value     |  Hours Played
-      ------------------------------------------
-      Phara       |       10     |      22
-      Mercy       |        9     |      11
-      Winston     |        3     |       2
-    '
-
-Tableware.arrays(input)
- # => [
-        ['Phara', '10', '22'],
-        ['Mercy', '9', '11'],
-        ['Winston', '3', '2']
-      ]
-
-Tableware.hashes(input)
-  #=> [
-        { hero: 'Phara', value: '10', hours_played: 22 },
-        { hero: 'Mercy', value: '9', hours_played: 11 },
-        { hero: 'Winston', value: '3', hours_played: 2 }
-      ]
-```
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
