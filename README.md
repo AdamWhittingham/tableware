@@ -1,6 +1,7 @@
 # Tableware
 
-Tableware is a tiny gem for making it slightly easier to define data in an ASCII table.
+Tableware is a tiny gem for making it easier to define data in an text table.
+Table rows are parsed into either arrays or hashes.
 
 For example, writing:
 
@@ -13,9 +14,9 @@ For example, writing:
   // Some test or permissions check or something
 end
 ```
-is fine but it can be a pain to format at work with.
+is fine but it can be a pain to format at work with, especially for larger data sets.
 
-Tableware lets you trade a bit of parsing for nicer ASCII. Instead of the above, you could write:
+Tableware lets you trade a bit of parsing for nicer text tables. Instead of the above, you could write:
 
 ```
 table = %q[
@@ -30,11 +31,14 @@ Tableware.arrays.each do |args|
 end
 ```
 
-*Please note* that this isn't going to always be better than defining your data as arrays, or writing your test data as a CSV and parsing it, or creating a giant hash of doom.
-This is just another option and one which may be better for that middle ground when you have too many columns for arrays to format nicely and too few rows to warrant throwing them in an external CSV file.
-Or perhaps you just like Cucumber scenario outlines and want something similar in rspec!
-Whatever your reasoning, this is just one more option.
+The upside is that you get a much more human friendly table to read, which will save you time by making it something you can quickly scan over.
+The downside is that everything appears on the other side as a string, so you may need to do some `.to_i`ing to convert things back into the type you're expecting.
 
+*Please note* that this isn't always going to be better than defining your data in another format; arrays, giant hashes of doom, JSON/YAML or even CSV may me easier to work with. This is another option and one which may be better for that middle ground when your data makes arrays hard to format but it's not big enough for you to want to extract it to an external file. Or perhaps you just like Cucumber scenario outlines and want something similar in rspec!
+Whatever your reasoning, this is just one more option for formatting your data.
+
+This gem has been created as a quick experiement to see if or how ofen this feature could be useful.
+If you find it useful, please like it or better yet, extend it!
 
 ## Installation
 
@@ -54,14 +58,44 @@ Or install it yourself as:
 
 ## Usage
 
-Tableware accepts ASCII tables following these rules:
-- Columns delimited by the `|` character
-- Header row is optional but if specified, it must be followed by a line of `-` or `=` characters
-- Start and end `|` characters on a row are optional; `| A | B |` is the same as `A | B`
+Tableware accepts text tables following these rules:
+
+  - Columns delimited by the `|` character
+  - Header row is optional but if specified, it must be followed by a line of `-` or `=` characters
+  - Start and end `|` characters on a row are optional; `| A | B |` is the same as `A | B`
+
 
 Tableware provides two main methods for getting your data back out of the table:
-1. `Tableware.arrays` returns an array of arrays
-1. `Tableware.hashes` returns an array of hashes, where the keys come from the headings row
+
+  1. `Tableware.arrays` returns an array of arrays
+  2. `Tableware.hashes` returns an array of hashes, where the keys come from the headings row
+
+
+For example:
+
+```
+input = '
+      Hero        |    Value     |  Hours Played
+      ------------------------------------------
+      Phara       |       10     |      22
+      Mercy       |        9     |      11
+      Winston     |        3     |       2
+    '
+
+Tableware.arrays(input)
+ # => [
+        ['Phara', '10', '22'],
+        ['Mercy', '9', '11'],
+        ['Winston', '3', '2']
+      ]
+
+Tableware.hashes(input)
+  #=> [
+        { hero: 'Phara', value: '10', hours_played: 22 },
+        { hero: 'Mercy', value: '9', hours_played: 11 },
+        { hero: 'Winston', value: '3', hours_played: 2 }
+      ]
+```
 
 ## Development
 
