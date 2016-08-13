@@ -2,6 +2,8 @@ class Tableware
 
   class Parser
 
+    class TableWithoutHeaderError < StandardError; end
+
     ROW_START = /^\s*\|/
     ROW_END   = /\|\s*$/
 
@@ -11,6 +13,7 @@ class Tableware
 
     def hashes(input)
       items = make_arrays(input)
+      raise TableWithoutHeaderError, 'Sorry, only text tables with headers rows can be turned into hashes' unless @headers
       items.map! { |row| @headers.zip(row).to_h }
     end
 
@@ -24,7 +27,10 @@ class Tableware
 
       @data_start = lines[1] =~ /^\s*[-=]+\s*$/ ? 2 : 0
       if @data_start.nonzero?
-        @headers = parse_line(lines[0]).map!(&:downcase).map!(&:to_sym)
+        @headers = parse_line(lines[0])
+                   .map!(&:downcase)
+                   .map! { |head| head.gsub(/\s+/, '_') }
+                   .map!(&:to_sym)
       end
 
       lines
