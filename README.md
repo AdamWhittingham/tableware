@@ -1,6 +1,6 @@
 # Tableware
 
-Tableware is a tiny gem for making it easier to define data in an text table.
+Tableware is a tiny gem for making it easier to define data in a text table.
 Table rows are parsed into either arrays or hashes.
 
 For example:
@@ -27,7 +27,7 @@ Tableware.hashes(stats)
       ]
 ```
 
-Writing test data or a matrix of permissions in a big hash or nested array is fine, but it can be a pain to format at work with, especially for larger data setsa or with item of very different lengths.
+Writing test data or a matrix of permissions in a big hash or nested array is fine, but it can be a pain to format and work with, especially for larger data sets or with items of very different lengths.
 
 Tableware lets you use a more human friendly format so that you can more easily scan and understand the data.
 
@@ -35,7 +35,7 @@ The downside is that everything is treated as a string, so you may need to do so
 
 This isn't always going to be better than defining your data in another format, but it is another option. Or perhaps you just like Cucumber scenario outlines and want something similar in rspec!
 
-This gem has been created as a quick experiment to see if or how ofen this feature could be useful.
+This gem has been created as a quick experiment to see if or how often this feature could be useful.
 If you find it useful, please like it or better yet, extend it!
 
 
