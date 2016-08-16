@@ -32,6 +32,17 @@ describe Tableware::Parser do
       expect(subject.arrays(input)).to eq expected
     end
 
+    it 'parses a table with a header row with alternate formatting' do
+      input = '   col_a  | col_b
+                =========|=========
+                value_a  | value_b
+                value_c  | value_d
+                value_e  | value_f '
+
+      expect(subject.arrays(input)).to eq expected
+    end
+
+
     it 'parses a table without side delimiters' do
       input = '
         value_a  | value_b
