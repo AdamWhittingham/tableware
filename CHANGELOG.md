@@ -1,3 +1,7 @@
+== v0.1.3 (16 August 2016)
+
+* Allow spaces in the header delimiter row
+
 == v0.1.2 (16 August 2016)
 
 * Bump to play with Gem releases
