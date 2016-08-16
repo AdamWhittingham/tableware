@@ -42,7 +42,6 @@ describe Tableware::Parser do
       expect(subject.arrays(input)).to eq expected
     end
 
-
     it 'parses a table without side delimiters' do
       input = '
         value_a  | value_b
