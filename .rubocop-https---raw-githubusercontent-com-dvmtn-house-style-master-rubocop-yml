@@ -10,6 +10,7 @@ AllCops:
     - 'vendor/**/*'
     - 'bin/**/*'
     - 'log/**/*'
+    - 'node_modules/**/*'
 
 Rails:
   Enabled: true
