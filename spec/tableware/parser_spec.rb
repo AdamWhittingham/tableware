@@ -6,7 +6,7 @@ describe Tableware::Parser do
       [
         %w[value_a value_b],
         %w[value_c value_d],
-        %w[value_e value_f]
+        %w[value_e value_f],
       ]
     end
 
@@ -72,7 +72,7 @@ describe Tableware::Parser do
       expect(subject.arrays(input)).to eq [
         ['value_a', 'value_b', ''],
         ['value_c', '', 'value_d'],
-        ['', 'value_e', 'value_f']
+        ['', 'value_e', 'value_f'],
       ]
     end
   end
@@ -88,7 +88,7 @@ describe Tableware::Parser do
       expected = [
         { col_a: 'value_a', col_b: 'value_b' },
         { col_a: 'value_c', col_b: 'value_d' },
-        { col_a: 'value_e', col_b: 'value_f' }
+        { col_a: 'value_e', col_b: 'value_f' },
       ]
 
       expect(Tableware.hashes(input)).to eq expected

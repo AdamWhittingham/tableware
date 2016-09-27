@@ -60,6 +60,9 @@ Style/SignalException:
 Style/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines
 
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
 Metrics/LineLength:
   Max: 140
   AllowURI: true

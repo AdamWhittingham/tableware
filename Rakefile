@@ -11,5 +11,5 @@ task default: [
   :"bake:rubocop",
   :"bake:rubycritic",
   :"bake:fasterer",
-  :"bake:ok_rainbow"
+  :"bake:ok_rainbow",
 ]

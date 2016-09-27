@@ -20,7 +20,7 @@ describe Tableware do
       expected = [
         %w[Phara 10],
         %w[Mercy 9],
-        %w[Winston 3]
+        %w[Winston 3],
       ]
 
       expect(Tableware.arrays(input)).to eq expected
@@ -32,7 +32,7 @@ describe Tableware do
       expected = [
         { hero: 'Phara',   value: '10' },
         { hero: 'Mercy',   value: '9' },
-        { hero: 'Winston', value: '3' }
+        { hero: 'Winston', value: '3' },
       ]
 
       expect(Tableware.hashes(input)).to eq expected
