@@ -13,7 +13,7 @@ class Tableware
 
     def hashes(input)
       items = make_arrays(input)
-      raise TableWithoutHeaderError, 'Sorry, only text tables with headers rows can be turned into hashes' unless @headers
+      raise TableWithoutHeaderError, 'Sorry, only text tables with header rows can be turned into hashes' unless @headers
       items.map! { |row| @headers.zip(row).to_h }
     end
 
