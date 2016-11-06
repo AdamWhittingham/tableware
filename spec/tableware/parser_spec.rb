@@ -75,6 +75,18 @@ describe Tableware::Parser do
         ['', 'value_e', 'value_f'],
       ]
     end
+
+    context 'when there is a line which starts with the `>` symbol' do
+      it 'returns only that line' do
+        input = '
+        | value_a  | value_b |
+      > | value_c  | value_d |
+        | value_e  | value_f |
+        '
+
+        expect(subject.arrays(input)).to eq [%w[value_c value_d]]
+      end
+    end
   end
 
   describe '.hashes' do
@@ -102,6 +114,18 @@ describe Tableware::Parser do
     it 'raises a sensible exception if called on a table without a heading row' do
       input = ' | data | row | '
       expect { Tableware.hashes(input) }.to raise_error described_class::TableWithoutHeaderError
+    end
+
+    context 'when there is a line which starts with the `>` symbol' do
+      it 'returns only that line' do
+        input = '  col_a  |  col_b
+               -------------------
+               value_a  | value_b
+            >  value_c  | value_d
+               value_e  | value_f'
+
+        expect(Tableware.hashes(input)).to eq [{ col_a: 'value_c', col_b: 'value_d' }]
+      end
     end
   end
 end

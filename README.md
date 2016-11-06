@@ -35,6 +35,19 @@ The downside is that everything is treated as a string, so you may need to do so
 
 This isn't always going to be better than defining your data in another format, but it is another option. Or perhaps you just like Cucumber scenario outlines and want something similar in rspec!
 
+You can also focus a single row, to help with debugging, by prepending a line with `>`.
+For example:
+
+```ruby
+words = '  Foo | Bar
+         > Yay | Woo
+           Zip | Zap '
+
+Tableware.arrays(words)
+  #=> [ ['Yay', 'Woo'] ]
+```
+
+
 This gem has been created as a quick experiment to see if or how often this feature could be useful.
 If you find it useful, please like it or better yet, extend it!
 

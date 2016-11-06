@@ -4,8 +4,8 @@ class Tableware
 
     class TableWithoutHeaderError < StandardError; end
 
-    ROW_START = /^\s*\|/
-    ROW_END   = /\|\s*$/
+    ROW_START = /^>?\s*\|?/
+    ROW_END   = /\|?\s*$/
 
     def arrays(input)
       make_arrays(input)
@@ -19,7 +19,11 @@ class Tableware
 
     private def make_arrays(input)
       lines = prepare_lines(input)
-      lines[@data_start..-1].map { |line| parse_line(line) }
+      lines[@data_start..-1].map do |line|
+        parsed = parse_line(line)
+        return [parsed] if @focused_line
+        parsed
+      end
     end
 
     private def prepare_lines(input)
@@ -38,9 +42,11 @@ class Tableware
 
     private def parse_line(line)
       line
+        .strip
+        .tap { |ln| @focused_line = ln[0] == '>' }
         .sub(ROW_START, '')
         .sub(ROW_END, '')
-        .split('|')
+        .split(' | ')
         .map!(&:strip)
     end
 
