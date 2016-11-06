@@ -1,6 +1,6 @@
 == v0.2.0 (06 November 2016)
 
-* Allow a single line to be processed by prepending it with a `>` character
+* Allow a single row to be processed by prepending it with a `>` character
 
 == v0.1.3 (16 August 2016)
 
