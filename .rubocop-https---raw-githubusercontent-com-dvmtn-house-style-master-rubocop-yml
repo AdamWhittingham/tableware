@@ -33,9 +33,15 @@ Style/MethodDefParentheses:
 Style/Encoding:
   Enabled: false
 
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
-    '%':  ()
+    '%': '""'
     '%i': '[]'
     '%q': '[]'
     '%Q': '[]'
@@ -64,5 +70,7 @@ Style/TrailingCommaInLiteral:
   EnforcedStyleForMultiline: comma
 
 Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
   Max: 140
   AllowURI: true
