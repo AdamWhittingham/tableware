@@ -1,3 +1,7 @@
+== v0.2.1 (06 November 2016)
+
+* Improve examples in the README
+
 == v0.2.0 (06 November 2016)
 
 * Allow a single row to be processed by prepending it with a `>` character
