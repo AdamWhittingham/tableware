@@ -1,3 +1,5 @@
+== v0.2.0 (06 November 2016)
+
 == v0.1.3 (16 August 2016)
 
 * Allow spaces in the header delimiter row
