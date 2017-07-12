@@ -1,3 +1,5 @@
+* Allow + characters in the header delimiter row
+
 == v0.2.1 (06 November 2016)
 
 * Improve examples in the README
