@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['adam@devmountain.co.uk']
 
   spec.summary       = 'A nice way of parsing text tables into Arrays or Hashes '
-  spec.description   = 'A nice way of parsing text tables into Ararys or Hashes, for clearer code. Great for tests and permissions matrixes!'
+  spec.description   = 'A nice way of parsing text tables into Ararys or Hashes for clearer code. Great for tests & permissions matrixes!'
   spec.homepage      = 'https://github.com/AdamWhittingham/tableware'
   spec.license       = 'MIT'
 
