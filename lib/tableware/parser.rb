@@ -29,7 +29,7 @@ class Tableware
     private def prepare_lines(input)
       lines = input.strip.lines
 
-      @data_start = lines[1] =~ /^\s*[-=\| ]+\s*$/ ? 2 : 0
+      @data_start = lines[1] =~ /^\s*[-=+\| ]+\s*$/ ? 2 : 0
       if @data_start.nonzero?
         @headers = parse_line(lines[0])
                    .map!(&:downcase)

@@ -92,7 +92,7 @@ describe Tableware::Parser do
   describe '.hashes' do
     it 'parses tables with header rows' do
       input = '  col_a  |  col_b
-               -------------------
+               ---------+---------
                value_a  | value_b
                value_c  | value_d
                value_e  | value_f'
