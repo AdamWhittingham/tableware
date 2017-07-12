@@ -1,3 +1,7 @@
+## v0.3.2 (12 July 2017)
+
+* Small refactorings for Rubocop compliance
+
 ## v0.3.1 (12 July 2017)
 
 * Allow + characters in the header delimiter row
