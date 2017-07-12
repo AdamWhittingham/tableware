@@ -5,7 +5,6 @@ require 'rake-n-bake'
 RSpec::Core::RakeTask.new(:spec)
 
 task default: [
-  :"bake:code_quality:all",
   :"bake:rspec",
   :"bake:coverage:check_specs",
   :"bake:rubocop",
