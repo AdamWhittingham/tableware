@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'tableware'
   spec.version       = Tableware::VERSION
   spec.authors       = ['Adam Whittingham']
-  spec.email         = ['adam@devmountain.co.uk']
+  spec.email         = ['adam.whittingham+gems@gmail.com']
 
   spec.summary       = 'A nice way of parsing text tables into Arrays or Hashes '
   spec.description   = 'A nice way of parsing text tables into Ararys or Hashes for clearer code. Great for tests & permissions matrixes!'
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r(^exe/)) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.12'
+  spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rake-n-bake'
